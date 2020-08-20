@@ -1,0 +1,20 @@
+
+.paper_style{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.main_display_area{
+    .initial_visible_area{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        font-family: 'Recursive', sans-serif;
+        .avatar_style{
+            height: 80px;
+            width: 80px;
+        }
+    }
+}
