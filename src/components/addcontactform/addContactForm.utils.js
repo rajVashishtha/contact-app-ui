@@ -1,0 +1,23 @@
+export const handlerOptions = [
+    {
+        text:"Google",
+        value:"google"
+    },
+    {
+        text:"Facebook",
+        value:"facebook"
+    },
+    {
+        text:"Instagram",
+        value:"instagram"
+    },{
+        text:"LinkedIn",
+        value:"linkedin"
+    },{
+        text:"Twitter",
+        value:"twitter"
+    },{
+        text:"Phone",
+        value:"phone"
+    }
+]

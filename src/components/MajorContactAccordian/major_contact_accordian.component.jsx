@@ -2,6 +2,7 @@ import React from 'react'
 import Skeleton from '@material-ui/lab/Skeleton'
 import DetailedAccordion from '../contactitems/contactItems.component'
 
+
 class MajorContactAccordian extends React.Component{
     state = {
         accounts:[]
@@ -32,10 +33,11 @@ class MajorContactAccordian extends React.Component{
                         <div>
 
                             {
-                                this.state.accounts.map(item=>(<DetailedAccordion text={item.text}
+                                this.state.accounts !== []?(this.state.accounts.map(item=>(<DetailedAccordion text={item.text}
                                     list={item.list}
-                                    />))
+                                    />))):(null)
                             }
+                            
                         </div>
 
                     )}

@@ -166,7 +166,8 @@ class MiniDrawer extends React.Component{
         })
       }
       handleChangeTab = (tab)=>{
-          const {setActiveTab, currentUser,history} = this.props
+          const {setActiveTab, currentUser,history, match} = this.props
+          console.log(match)
           if (currentUser === null){
             this.setState({
               openSnackBar:true
@@ -174,6 +175,7 @@ class MiniDrawer extends React.Component{
             return;
           }
           setActiveTab(tab)
+          tab = tab.toLowerCase()
           history.push("/contacts/"+tab)
       }
   render(){

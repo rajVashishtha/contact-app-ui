@@ -33,13 +33,13 @@ const CssTextField = withStyles({
 
 export default function InputTextField(props) {
   const classes = useStyles();
-  const {type, label, variant, icon, width} = props
+  const {type, label, variant, icon,color="white", width} = props
   return (
     <div>
       <div className={classes.margin}>
         <Grid container spacing={1} alignItems="flex-end">
           <Grid item style={{
-            paddingBottom:"5px"
+            paddingBottom:"10px"
           }}>
             {icon}
           </Grid>
@@ -52,8 +52,8 @@ export default function InputTextField(props) {
             id={`${label}-text`}
             inputProps={{
               style:{
-                width:`${width}`,
-                color:"white"
+                width:`${width}px`,
+                color:`${color}`
               }
             }}
             {...props}

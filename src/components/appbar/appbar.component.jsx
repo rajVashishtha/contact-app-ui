@@ -17,6 +17,7 @@ import {AddBoxRounded } from '@material-ui/icons';
 import {setCurrentUser} from '../../redux/user/user.action'
 import {Link} from 'react-router-dom'
 import { connect } from 'react-redux';
+import { setSearchText } from '../../redux/search/search.action';
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
@@ -138,9 +139,11 @@ function SearchAppBar({classesGiven, openDrawer, classesForMenuButton,setCurrent
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton aria-label="add Contacts" color="inherit">
-          <AddBoxRounded />
-        </IconButton>
+        <Link to="/addcontact">
+          <IconButton aria-label="add Contacts" color="inherit">
+            <AddBoxRounded />
+          </IconButton>
+        </Link>
         <p>Add Contact</p>
       </MenuItem>
       <MenuItem>
@@ -200,9 +203,11 @@ function SearchAppBar({classesGiven, openDrawer, classesForMenuButton,setCurrent
           <div className={classes.grow} />
           {
             currentUser?(<div className={classes.sectionDesktop}>
-              <IconButton aria-label="add Contacts" color="inherit">
-                <AddBoxRounded />
-              </IconButton>
+              <Link to="/addcontact">
+                <IconButton aria-label="add Contacts" color="inherit">
+                  <AddBoxRounded style={{color:"white"}} />
+                </IconButton>
+              </Link>
               <IconButton aria-label="show 17 new notifications" color="inherit">
                 <Badge badgeContent={17} color="secondary">
                   <NotificationsIcon />
@@ -240,11 +245,14 @@ function SearchAppBar({classesGiven, openDrawer, classesForMenuButton,setCurrent
 }
 
 const mapDispatchToProps = dispatch =>({
-  setCurrentUser : user => dispatch(setCurrentUser(user))
+  setCurrentUser : user => dispatch(setCurrentUser(user)),
+  setSearchText : text =>dispatch(setSearchText(text))
 })
 
+
+
 const mapStateToProps = state =>({
-  currentUser : state.user.currentUser
+  currentUser : state.user.currentUser,
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(SearchAppBar)
