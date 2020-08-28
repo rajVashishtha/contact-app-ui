@@ -1,10 +1,10 @@
 const INITIAL_STATE = {
-    searchText : []
+    searchText : ""
 }
 
 const searchReducer = (state = INITIAL_STATE, action) =>{
     switch(action.type){
-        case 'SET_CONTACTS' : 
+        case 'SET_SEARCH_TEXT' : 
             return{
                 ...state,
                 searchText : action.payload

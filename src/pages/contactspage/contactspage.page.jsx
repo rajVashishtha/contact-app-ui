@@ -83,7 +83,7 @@ class ContactsPage extends React.Component{
         })
     }
     render(){
-        const { match, contacts} = this.props
+        const { match, contacts, searchText} = this.props
         const { handleId }= match.params
         return(
             <div>
@@ -106,7 +106,14 @@ class ContactsPage extends React.Component{
                 desc={"gebrish"} accounts={["temp"]} />):(null)
         }
         {
-            contacts.map(item=>(
+            contacts.filter(item=>{
+                // eslint-disable-next-line
+                if(searchText.length == 0){
+                    return true
+                }
+                const search = new RegExp(searchText.toLowerCase())
+                return item.contact_name.toLowerCase().match(search)
+            }).map(item=>(
                 <DisplayCard name={item.contact_name} key={`contact-${item.contact_name}`} display_skeleton={this.state.skeleton} 
             desc={item.contact_desc} accounts={filterContact(item.template, handleId)} />
             ))
@@ -120,7 +127,8 @@ class ContactsPage extends React.Component{
 const mapStateToProps = state =>({
     currentActive : state.activeTab.currentActiveTab,
     currentUser   : state.user.currentUser,
-    contacts : state.contacts.contacts
+    contacts : state.contacts.contacts,
+    searchText: state.searchText.searchText
 })
 
 const mapDispatchToProps = dispatch =>({

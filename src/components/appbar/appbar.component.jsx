@@ -83,7 +83,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function SearchAppBar({classesGiven, openDrawer, classesForMenuButton,setCurrentUser,currentUser}) {
+function SearchAppBar({classesGiven, openDrawer, classesForMenuButton,setCurrentUser,currentUser,setSearchText}) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -104,11 +104,18 @@ function SearchAppBar({classesGiven, openDrawer, classesForMenuButton,setCurrent
     handleMobileMenuClose();
   };
 
+  const handleChange = (event)=>{
+    console.log("working -->",event.target.value)
+    const text = event.target.value
+    setSearchText(text.trim().replace(/[^a-zA-Z ]/g, ""))
+  }
+
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
   const logOutFunction = ()=>{
     setCurrentUser(null)
+    // localStorage.removeItem('contact-app-state')
     handleMenuClose()
   }
   const menuId = 'primary-search-account-menu';
@@ -193,6 +200,7 @@ function SearchAppBar({classesGiven, openDrawer, classesForMenuButton,setCurrent
             </div>
             <InputBase
               placeholder="Search Contact..."
+              onChange={handleChange}
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
